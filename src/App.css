@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.logo {
+  height: 100px;
+  width: 150px;
+}
+
+.icons img{
+  margin: 10px
+}
