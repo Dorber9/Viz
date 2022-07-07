@@ -37,11 +37,70 @@
   }
 }
 
+.custom-tooltip {
+  background-color: rgba(244, 244, 244, 0.893);
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px;
+}
+
 .logo {
   height: 100px;
   width: 150px;
 }
 
-.icons img{
-  margin: 10px
+.icons img {
+  margin: 10px;
 }
+
+/* const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#e60000"]; */
+
+.relegation {
+  width: 65px;
+  height: 36px;
+  float: left;
+
+  background: #e60000;
+  border: 2px solid #e60000;
+  color: #fff;
+  text-align: center;
+
+  font: 14px Arial, sans-serif;
+}
+
+.bottom {
+  width: 65px;
+  height: 36px;
+  float: left;
+  background: #ff8042;
+  border: 2px solid #ff8042;
+  color: #fff;
+  text-align: center;
+
+  font: 14px Arial, sans-serif;
+}
+
+.mid {
+  width: 65px;
+  height: 36px;
+  float: left;
+  background: #ffbb28;
+  border: 2px solid #ffbb28;
+  color: #fff;
+  text-align: center;
+
+  font: 14px Arial, sans-serif;
+}
+
+.Top {
+  width: 65px;
+  height: 36px;
+  float: left;
+  background: #00c49f;
+  border: 2px solid #00c49f;
+  color: #fff;
+  text-align: center;
+
+  font: 14px Arial, sans-serif;
+}
+
