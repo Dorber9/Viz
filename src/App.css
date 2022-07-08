@@ -1,30 +1,31 @@
 .App {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-image: url("./images/bg.jpg"), linear-gradient(45deg, #000000e0, transparent);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    text-align: center;
-    max-width: 100%;
-    overflow-x: hidden;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-image: url("./images/bg.jpg"),
+    linear-gradient(45deg, #000000e0, transparent);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  text-align: center;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  min-height: calc(100vh - 80px);
 }
 
 .App-logo {
-    height: 40vmin;
-    pointer-events: none;
+  height: 40vmin;
+  pointer-events: none;
 }
 
 .pshDwn {
-    min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
-
 
 /* .App-header {
   background-color: #282c34;
@@ -38,129 +39,128 @@
 } */
 
 .App-link {
-    color: #61dafb;
+  color: #61dafb;
 }
 
 .me-auto .nav-link {
-    color: rgb(255 255 255);
+  color: rgb(255 255 255);
 }
 
 .card {
-    padding: 10px;
-    margin: 5px;
-    background: black;
+  padding: 10px;
+  margin: 5px;
+  background: black;
 }
 
 .card-body {
-    color: white;
+  color: white;
 }
 
 @keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .custom-tooltip {
-    background-color: rgba(244, 244, 244, 0.893);
-    border: 1px solid;
-    padding: 10px;
-    box-shadow: 5px 10px;
+  background-color: rgba(244, 244, 244, 0.893);
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px;
 }
 
 .logo {
-    height: 100px;
-    width: 150px;
+  height: 100px;
+  width: 150px;
 }
 
 .icons img {
-    margin: 10px;
+  margin: 10px;
 }
-
 
 /* const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#e60000"]; */
 
 .relegation {
-    width: 65px;
-    height: 36px;
-    float: left;
-    background: #e60000;
-    border: 2px solid #e60000;
-    color: #fff;
-    text-align: center;
-    font: 14px Arial, sans-serif;
+  width: 65px;
+  height: 36px;
+  float: left;
+  background: #e60000;
+  border: 2px solid #e60000;
+  color: #fff;
+  text-align: center;
+  font: 14px Arial, sans-serif;
 }
 
 .bottom {
-    width: 65px;
-    height: 36px;
-    float: left;
-    background: #ff8042;
-    border: 2px solid #ff8042;
-    color: #fff;
-    text-align: center;
-    font: 14px Arial, sans-serif;
+  width: 65px;
+  height: 36px;
+  float: left;
+  background: #ff8042;
+  border: 2px solid #ff8042;
+  color: #fff;
+  text-align: center;
+  font: 14px Arial, sans-serif;
 }
 
 .mid {
-    width: 65px;
-    height: 36px;
-    float: left;
-    background: #ffbb28;
-    border: 2px solid #ffbb28;
-    color: #fff;
-    text-align: center;
-    font: 14px Arial, sans-serif;
+  width: 65px;
+  height: 36px;
+  float: left;
+  background: #ffbb28;
+  border: 2px solid #ffbb28;
+  color: #fff;
+  text-align: center;
+  font: 14px Arial, sans-serif;
 }
 
 .Top {
-    width: 65px;
-    height: 36px;
-    float: left;
-    background: #00c49f;
-    border: 2px solid #00c49f;
-    color: #fff;
-    text-align: center;
-    font: 14px Arial, sans-serif;
+  width: 65px;
+  height: 36px;
+  float: left;
+  background: #00c49f;
+  border: 2px solid #00c49f;
+  color: #fff;
+  text-align: center;
+  font: 14px Arial, sans-serif;
 }
 
 blockquote {
-    border-left: none;
+  border-left: none;
 }
 
 .quote-badge {
-    background-color: #000000;
-    background-color: rgba(0, 0, 0, 0.2);
+  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .quote-box {
-    margin: 0 auto;
-    overflow: hidden;
-    margin-top: 50px;
-    padding-top: -25px;
-    border-radius: 17px;
-    background-color: #000000a1;
-    color: white;
-    width: 350px;
-    box-shadow: 2px 2px 2px 2px #d7b351;
-    text-align: center;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 50px;
+  padding-top: -25px;
+  border-radius: 17px;
+  background-color: #000000a1;
+  color: white;
+  width: 350px;
+  box-shadow: 2px 2px 2px 2px #d7b351;
+  text-align: center;
 }
 
 .quotation-mark {
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 100px;
-    color: white;
-    font-family: "Times New Roman", Times, Serif;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 100px;
+  color: white;
+  font-family: "Times New Roman", Times, Serif;
 }
 
 .quote-text {
-    margin-left: 5px;
-    font-size: 19px;
-    margin-top: -60px;
-    margin-right: 5px;
-    margin-bottom: 20px;
+  margin-left: 5px;
+  font-size: 19px;
+  margin-top: -60px;
+  margin-right: 5px;
+  margin-bottom: 20px;
 }
