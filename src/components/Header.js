@@ -9,11 +9,11 @@ import {
 } from "react-bootstrap";
 
 const navStyle= {color:"white" , marginLeft:"15px", fontSize:"20px", textDecoration: 'none'}
-const selectedStyle={borderBottom: "1px solid white" , color: "#e9c363",marginLeft:"15px", fontSize:"20px", textDecoration: 'none'}
+const selectedStyle={borderBottom: "1px solid #a3a3a4" , color: "rgb(137 134 255)",marginLeft:"15px", fontSize:"20px", textDecoration: 'none'}
 
 const Header = () => {
   return (
-    <Navbar style={{background:"black",boxShadow: "rgb(210 188 125) 0px 0px 5px",height:"50px"}} bg="dark" variant="dark">
+    <Navbar style={{background:"#252626",boxShadow: "rgb(65 62 160) 0px 0px 5px",height:"30px"}} bg="dark" variant="dark">
         <Container>
 
           <Nav className="me-auto">

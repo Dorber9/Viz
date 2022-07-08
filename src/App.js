@@ -13,7 +13,10 @@ import PieChartAtt from "./components/PieChartAtt";
 function App() {
   return (
     <>
+       
     <div className="App">
+          
+
       <Header />
       <BrowserRouter>
       <Routes>
@@ -26,8 +29,7 @@ function App() {
        </Routes>
        </BrowserRouter>
     </div>
-    
-    
+
     </>
   );
 }

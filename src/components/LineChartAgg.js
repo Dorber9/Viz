@@ -57,9 +57,9 @@ const LineChartAgg = () => {
     return null;
   };
 
-  console.log(convertedArray);
   return (
     <>
+    <div className=".pshDwn">
       <ComposedChart
         width={800}
         height={600}
@@ -70,6 +70,7 @@ const LineChartAgg = () => {
           left: 20,
           bottom: 5,
         }}
+        style={{background:"#a5a5a5", marginLeft:"23%" , marginTop:"60px" , boxShadow:"rgb(65 62 160) 1px 1px 10px"}}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
@@ -89,6 +90,7 @@ const LineChartAgg = () => {
           activeDot={{ r: 8 }}
         />
       </ComposedChart>
+      </div>
     </>
   );
 };

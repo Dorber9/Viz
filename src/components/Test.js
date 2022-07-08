@@ -12,10 +12,34 @@ import {
 } from "recharts";
 import { data } from "../data/Big5Stats";
 import { Card } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import Select from "react-select";
 
 const cardShadow = { boxShadow: "0px 0 2px rgb(255 225 140)" };
 
-const res = data.filter((mzab) => mzab.rank == 1);
+
+const leagues = [
+  { label: "Premier League", value: "Premier League" },
+  { label: "La Liga", value: "La Liga" },
+  { label: "Ligue 1", value: "Ligue 1" },
+  { label: "Bundesliga ", value: "Bundesliga" },
+  { label: "Serie A ", value: "Serie A" },
+  { label: "All", value: "All" }
+];
+
+const styles = {
+  container: (base) => ({
+    ...base,
+    flex: 1,
+    width: "250px",
+    marginLeft: "50px",
+  }),
+};
+
+const Test = () => {
+    const [leagA, setLeagA] = useState("All");
+
+  const res = leagA=="All"? data.filter((mzab) => mzab.rank == 1):data.filter((mzab) => mzab.rank == 1 && mzab.competition==leagA);
 let res1 = [];
 res.forEach((element) =>
   res1.hasOwnProperty(element.squad)
@@ -44,10 +68,6 @@ const convertedArray = Object.keys(res1).map((x) => {
     titles: titles[x],
   };
 });
-
-console.log(convertedArray);
-
-const Test = () => {
   return (
     <div className="pshDwn">
       <div style={{ float: "left" }}>
@@ -56,7 +76,7 @@ const Test = () => {
             marginLeft: "50px",
             marginTop: "15px",
             background: "black",
-            boxShadow: "1px 1px 10px rgb(255 224 89)",
+            boxShadow: "rgb(167 168 171) 1px 1px 10px",
           }}
           width={850}
           height={550}
@@ -72,7 +92,7 @@ const Test = () => {
             interval={0}
             height={85}
             angle="-40"
-            stroke="#ffe059"
+            stroke="#413ea0"
             label={{
               value: "Team",
               position: "insideTopLeft",
@@ -109,6 +129,12 @@ const Test = () => {
             <Card.Text>This graph shows...</Card.Text>
           </Card.Body>
         </Card>
+         <Select
+          placeholder="Select League"
+          options={leagues}
+          onChange={(e) => setLeagA(e.value)}
+          
+        />
       </div>
     </div>
   );
