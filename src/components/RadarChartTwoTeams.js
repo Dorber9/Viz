@@ -27,44 +27,7 @@ import {
 
 import { data } from "../data/Big5Stats";
 
-const ez = [
-  {
-    subject: "Math",
-    A: 120,
-    B: 110,
-    fullMark: 150,
-  },
-  {
-    subject: "Chinese",
-    A: 98,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: "English",
-    A: 86,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: "Geography",
-    A: 99,
-    B: 100,
-    fullMark: 150,
-  },
-  {
-    subject: "Physics",
-    A: 85,
-    B: 90,
-    fullMark: 150,
-  },
-  {
-    subject: "History",
-    A: 65,
-    B: 85,
-    fullMark: 150,
-  },
-];
+
 
 const styles = {
   container: (base) => ({
@@ -157,61 +120,82 @@ const RadarChartTwoTeams = () => {
 
   return (
     <>
+    <div className="pshDwn">
+      <div style={{marginLeft:"38%" , marginTop:"10px"}}>
       <Select
+        placeholder="Select Season"
         styles={styles}
         options={all_seasons}
         onChange={(e) => changeSeason(e.value)}
       ></Select>
+      </div>
       {season == "" ? (
         ""
       ) : (
+        <div style={{marginLeft:"25%" , marginTop:"10px"}}>
         <Select
+          placeholder="Select First Team League"
           styles={styles}
           options={leagues}
           onChange={(e) => changeLeagA(e.value)}
+          
         />
+        </div>
+        
       )}
       {leagA == "" ? (
         ""
       ) : (
+     <div style={{marginLeft:"25%" , marginTop:"10px"}}>
         <Select
+          placeholder="Select First Team"
           styles={styles}
           options={teamsA}
           onChange={(e) => setTeamA(e.value)}
         ></Select>
+        </div>
       )}
       {teamA == "" ? (
         ""
       ) : (
+             <div style={{marginLeft:"51%" , marginTop:"-85px"}}>
         <Select
+         placeholder="Select Second Team League"
           styles={styles}
           options={leagues}
           onChange={(e) => changeLeagB(e.value)}
         ></Select>
+        </div>
       )}
       {leagB == "" ? (
         ""
       ) : (
+                     <div style={{marginLeft:"51%" , marginTop:"10px"}}>
+
         <Select
+                 placeholder="Select Second Team"
           styles={styles}
           options={teamsB}
           onChange={(e) => setTeamB(e.value)}
         ></Select>
+        </div>
       )}
 
       {teamA == "" || teamB == "" ? (
         ""
       ) : (
         <RadarChart
+        style={{marginLeft:"30%", marginTop:"15px" , background:"black", boxShadow:"rgb(165 166 169) 1px 1px 10px"}}
           cx={300}
           cy={250}
           outerRadius={150}
-          width={500}
+          width={600}
           height={500}
           data={data_to_use}
         >
           <PolarGrid />
-          <PolarAngleAxis dataKey="Subject" />
+          <Tooltip/>
+          <PolarAngleAxis dataKey="Subject" stroke="#8884d8" />
           <PolarRadiusAxis angle={30} domain={[0, 105]} />
           <Radar
             name={teamA}
@@ -229,7 +213,9 @@ const RadarChartTwoTeams = () => {
           />
           <Legend />
         </RadarChart>
+        
       )}
+      </div>
     </>
   );
 };

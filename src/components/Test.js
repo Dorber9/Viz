@@ -11,6 +11,12 @@ import {
   LabelList,
 } from "recharts";
 import { data } from "../data/Big5Stats";
+import {
+  Card,
+  
+} from "react-bootstrap";
+
+const cardShadow={boxShadow:"0px 0 2px rgb(255 225 140)"};
 
 const res = data.filter((mzab) => mzab.rank == 1);
 let res1 = [];
@@ -46,7 +52,10 @@ console.log(convertedArray);
 
 const Test = () => {
   return (
-    <BarChart width={800} height={450} data={convertedArray}>
+    <div className="pshDwn">
+
+    <div style={{float:"left"}}>
+    <BarChart style={{marginLeft:"50px", marginTop:"15px" , background:"black", boxShadow:"1px 1px 10px rgb(255 224 89)"}} width={850} height={550} data={convertedArray}>
       <CartesianGrid strokeDasharray="3 3" />
       <Tooltip />
       <XAxis
@@ -57,9 +66,9 @@ const Test = () => {
         interval={0}
         height={85}
         angle="-40"
-        stroke="#8884d8"
-      />
-      <YAxis />
+        stroke="#ffe059"
+        label={{ value: "Team", position: "insideTopLeft", fontSize:"13px", dy:5, dx: -30, stroke:"white" }}      />
+      <YAxis label={{ value: "Goals amount", dy: 170, dx:-10, stroke:"white", angle:"90" }} />
       <Bar dataKey="goals_for" fill="#00ff00">
         <LabelList
           dataKey="titles"
@@ -67,8 +76,23 @@ const Test = () => {
           style={{ fill: "white" }}
         />
       </Bar>
-      <Bar dataKey="goals_against" fill="#ff0000" />
+      <Bar dataKey="goals_against" fill="#ff0000"  />
     </BarChart>
+    </div>
+          <div style={{float:"left" , marginLeft:"25px", marginTop:"25px"}}>
+             <Card className="card" style={cardShadow}>
+            <Card.Body>
+              <Card.Title>What's the key for winning titles?</Card.Title>
+              
+              <Card.Text>
+                This graph shows...
+                
+              </Card.Text>
+              
+            </Card.Body>
+          </Card>
+          </div>
+    </div>
   );
 };
 
