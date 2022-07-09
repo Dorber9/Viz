@@ -73,13 +73,30 @@
 }
 
 .logo {
-    height: 100px;
-    width: 150px;
+    height: 50px;
+    box-shadow: -1px 4px 6px #a6b8ff;
+    border-radius: 85%;
+    cursor: pointer;
+    margin-left: 45px;
 }
 
-.icons img {
-    margin: 10px;
+.logo:hover {
+    transform: scale(1.5)
 }
+
+.logoSelected {
+    height: 50px;
+    box-shadow: -1px 4px 6px #0034ff;
+    border-radius: 85%;
+    cursor: pointer;
+    margin-left: 45px;
+    transform: scale(1.6);
+}
+
+
+/* .icons img {
+    margin-left: "45px";
+} */
 
 
 /* const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#e60000"]; */

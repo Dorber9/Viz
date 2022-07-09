@@ -158,51 +158,57 @@ const PieChartAtt = () => {
 
   return (
     <>
+    <div className="pshDwn">
       <div
         className="icons"
         style={{
-          marginRight: "500px",
           marginTop: "50px",
-          position: "relative",
-          padding: "5px",
+             background: "rgb(255 255 255 / 59%)",
+    borderRadius: "50%",
+    boxShadow:"-8px 3px 7px 3px #b9fffa80"
         }}
       >
-        <div style={{ backgroundColor: "rgba(244, 244, 244, 0.7)" }}>
+
           <img
             src={PL}
-            className="logo"
+            className={league=="Premier League"? "logoSelected": "logo"}
             onClick={() => setLeagueEraseTeam("Premier League")}
           ></img>
           <img
             src={BL}
-            className="logo"
+            className={league=="Bundesliga"? "logoSelected": "logo"}
             onClick={() => setLeagueEraseTeam("Bundesliga")}
           ></img>
           <img
             src={LL}
-            className="logo"
+            className={league=="La Liga"? "logoSelected": "logo"}
             onClick={() => setLeagueEraseTeam("La Liga")}
           ></img>
           <img
             src={LONE}
-            className="logo"
+                        className={league=="Ligue 1"? "logoSelected": "logo"}
+
             onClick={() => setLeagueEraseTeam("Ligue 1")}
           ></img>
           <img
             src={SA}
-            className="logo"
+                        className={league=="Serie A"? "logoSelected": "logo"}
+
             onClick={() => setLeagueEraseTeam("Serie A")}
           ></img>
-        </div>
+        
       </div>
       {team == "" ? (
+
         <PieChart
           width={500}
           height={450}
-          style={{ backgroundColor: "rgba(35, 35, 35, 0.5)" }}
+  
+                        style={{background: "#cfcfcf7a" , boxShadow: "-1px 4px 6px #0034ff" , marginTop:"25px" , marginLeft:"500px"}}
         >
-          <Tooltip content={<CustomTooltip />} />
+          {/* <Tooltip content={<CustomTooltip />} /> */}
           <Pie
+   
             data={convertedArray}
             cx="50%"
             cy="50%"
@@ -212,6 +218,7 @@ const PieChartAtt = () => {
             fill="#8884d8"
             dataKey="titles"
             nameKey="team"
+            style={{cursor:"pointer"}}
             onClick={(e) => setTeam(e.name)}
           >
             {convertedArray.map((entry, index) => (
@@ -274,6 +281,7 @@ const PieChartAtt = () => {
       ) : (
         ""
       )}{" "}
+      </div>
     </>
   );
 };
