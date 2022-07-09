@@ -34,7 +34,7 @@ const styles = {
     ...base,
     flex: 1,
     width: "250px",
-    marginLeft: "50px",
+    marginLeft: "350px",
   }),
 };
 
@@ -64,6 +64,7 @@ const PieChartAtt = () => {
     return (
       <>
         <text
+          style={{fontSize:"20px"}}
           x={x}
           y={y}
           fill={fill}
@@ -204,9 +205,8 @@ const PieChartAtt = () => {
           width={500}
           height={450}
   
-                        style={{background: "#cfcfcf7a" , boxShadow: "-1px 4px 6px #0034ff" , marginTop:"25px" , marginLeft:"500px"}}
+           style={{background: "#0000006b" , boxShadow: "-1px 4px 6px #0034ff" , marginTop:"25px" , marginLeft:"500px"}}
         >
-          {/* <Tooltip content={<CustomTooltip />} /> */}
           <Pie
    
             data={convertedArray}
@@ -225,15 +225,18 @@ const PieChartAtt = () => {
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}
+
               />
             ))}
           </Pie>
           <text
-            x="100"
+            x="60"
             y="40"
             dominantBaseline="hanging"
             fontSize="24"
             fontWeight="bold"
+            fill="white"
+            style={{color:"white"}}
           >
             Titles per team in {league}
           </text>
@@ -243,7 +246,7 @@ const PieChartAtt = () => {
       )}
       {team != "" ? (
         <>
-          <h2 style={{ textAlign: "left", marginLeft: "200px" }}>
+          <h2 style={{ textAlign: "left", marginLeft: "200px" , color:"white" }}>
             {" "}
             {team}
             's Championships. Choose a season{" "}
@@ -259,7 +262,7 @@ const PieChartAtt = () => {
               <div className="mid"> Mid - Table </div>{" "}
               <div className="bottom"> Bottom </div>{" "}
               <div className="relegation"> Relegated </div>
-              <FunnelChart width={850} height={580}>
+              <FunnelChart width={850} height={580} style={{background: "#0000006b" , boxShadow: "-1px 4px 6px #0034ff" , marginTop:"10px" , marginLeft:"350px"}}>
                 <Funnel
                   dataKey="points"
                   data={league_table.sort((a, b) => b.points - a.points)}
