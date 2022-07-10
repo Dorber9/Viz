@@ -17,14 +17,13 @@ import Select from "react-select";
 
 const cardShadow = { boxShadow: "0px 0 2px rgb(255 225 140)" };
 
-
 const leagues = [
   { label: "Premier League", value: "Premier League" },
   { label: "La Liga", value: "La Liga" },
   { label: "Ligue 1", value: "Ligue 1" },
   { label: "Bundesliga ", value: "Bundesliga" },
   { label: "Serie A ", value: "Serie A" },
-  { label: "All", value: "All" }
+  { label: "All", value: "All" },
 ];
 
 const styles = {
@@ -36,38 +35,60 @@ const styles = {
   }),
 };
 
+const CustomTooltip = ({ active, payload, label }) => {
+  console.log(payload[0]);
+  if (active && payload && payload.length) {
+    return (
+      <div className="custom-tooltip">
+        <p className="label">Team:{`${label}`}</p>
+
+        <p className="label">Goals For: {`${payload[0].payload.goals_for}`}</p>
+        <p className="label">
+          Goals Against: {`${payload[0].payload.goals_against}`}
+        </p>
+        <p className="label">Titles: {`${payload[0].payload.titles}`}</p>
+      </div>
+    );
+  }
+
+  return null;
+};
+
 const Test = () => {
-    const [leagA, setLeagA] = useState("All");
+  const [leagA, setLeagA] = useState("All");
 
-  const res = leagA=="All"? data.filter((mzab) => mzab.rank == 1):data.filter((mzab) => mzab.rank == 1 && mzab.competition==leagA);
-let res1 = [];
-res.forEach((element) =>
-  res1.hasOwnProperty(element.squad)
-    ? (res1[element.squad] += element.goals_for)
-    : (res1[element.squad] = element.goals_for)
-);
-let res2 = [];
-res.forEach((element) =>
-  res2.hasOwnProperty(element.squad)
-    ? (res2[element.squad] += element.goals_against)
-    : (res2[element.squad] = element.goals_against)
-);
+  const res =
+    leagA == "All"
+      ? data.filter((mzab) => mzab.rank == 1)
+      : data.filter((mzab) => mzab.rank == 1 && mzab.competition == leagA);
+  let res1 = [];
+  res.forEach((element) =>
+    res1.hasOwnProperty(element.squad)
+      ? (res1[element.squad] += element.goals_for)
+      : (res1[element.squad] = element.goals_for)
+  );
+  let res2 = [];
+  res.forEach((element) =>
+    res2.hasOwnProperty(element.squad)
+      ? (res2[element.squad] += element.goals_against)
+      : (res2[element.squad] = element.goals_against)
+  );
 
-let titles = [];
-res.forEach((element) =>
-  titles.hasOwnProperty(element.squad)
-    ? (titles[element.squad] += 1)
-    : (titles[element.squad] = 1)
-);
+  let titles = [];
+  res.forEach((element) =>
+    titles.hasOwnProperty(element.squad)
+      ? (titles[element.squad] += 1)
+      : (titles[element.squad] = 1)
+  );
 
-const convertedArray = Object.keys(res1).map((x) => {
-  return {
-    team: x,
-    goals_for: Math.round(res1[x] / titles[x]),
-    goals_against: Math.round(res2[x] / titles[x]),
-    titles: titles[x],
-  };
-});
+  const convertedArray = Object.keys(res1).map((x) => {
+    return {
+      team: x,
+      goals_for: Math.round(res1[x] / titles[x]),
+      goals_against: Math.round(res2[x] / titles[x]),
+      titles: titles[x],
+    };
+  });
   return (
     <div className="pshDwn">
       <div style={{ float: "left" }}>
@@ -83,8 +104,19 @@ const convertedArray = Object.keys(res1).map((x) => {
           data={convertedArray}
           title="try"
         >
+          <text
+            x={500 / 2}
+            y={20}
+            fill="white"
+            textAnchor="middle"
+            dominantBaseline="central"
+          >
+            <tspan fontSize="14">
+              The key for winning titles - Defence or Offence?
+            </tspan>
+          </text>
           <CartesianGrid strokeDasharray="3 3" />
-          <Tooltip />
+          <Tooltip content={<CustomTooltip />} />
           <XAxis
             dataKey={"team"}
             textAnchor="end"
@@ -101,7 +133,7 @@ const convertedArray = Object.keys(res1).map((x) => {
               dy: 5,
               dx: -30,
               stroke: "white",
-              fontFamily:"auto"
+              fontFamily: "auto",
             }}
           />
           <YAxis
@@ -111,33 +143,51 @@ const convertedArray = Object.keys(res1).map((x) => {
               dx: -10,
               stroke: "white",
               angle: "90",
-              fontSize:"14px",
-              fontFamily:"auto"
+              fontSize: "14px",
+              fontFamily: "auto",
             }}
           />
           <Bar dataKey="goals_for" fill="#00ff00">
             <LabelList
               dataKey="titles"
               position="insideRight"
-              style={{ fill: "white" }}
+              style={{ fill: "black" }}
             />
           </Bar>
           <Bar dataKey="goals_against" fill="#ff0000" />
         </BarChart>
       </div>
-      <div style={{ float: "left", marginLeft: "25px", marginTop: "25px",width:"200px" }}>
+      <div
+        style={{
+          float: "left",
+          marginLeft: "25px",
+          marginTop: "25px",
+          width: "200px",
+        }}
+      >
         <Card className="card" style={cardShadow}>
           <Card.Body>
-            <Card.Title>What's the key for winning titles? Offence or Defence?</Card.Title>
+            <Card.Title>
+              What's the key for winning titles? Offence or Defence?
+            </Card.Title>
 
-            <Card.Text>This graph shows the connection between goals scored, goals conceeded and amount of titles won last 10 years</Card.Text>
+            <Card.Text>
+              This graph shows the connection between goals scored, goals
+              conceeded and amount of titles won last 10 years.{" "}
+              <span style={{ color: "#00ff00" }}>The green bar</span> shows the
+              average amount of goals scored by the team in their championship's
+              winning years, and
+              <span style={{ color: "#ff0000" }}> The red bar</span> show the
+              average amount of goals conceeded by the team in those seasons.The
+              numbers on the green bar show the amount of titles the team won in
+              the last 11 seasons.
+            </Card.Text>
           </Card.Body>
         </Card>
-         <Select
+        <Select
           placeholder="Fillter by League"
           options={leagues}
           onChange={(e) => setLeagA(e.value)}
-          
         />
       </div>
     </div>

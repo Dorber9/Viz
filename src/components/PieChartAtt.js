@@ -64,7 +64,7 @@ const PieChartAtt = () => {
     return (
       <>
         <text
-          style={{fontSize:"20px"}}
+          style={{ fontSize: "20px" }}
           x={x}
           y={y}
           fill={fill}
@@ -159,137 +159,173 @@ const PieChartAtt = () => {
 
   return (
     <>
-    <div className="pshDwn">
-      <div
-        className="icons"
-        style={{
-          marginTop: "50px",
-             background: "rgb(255 255 255 / 59%)",
-    borderRadius: "50%",
-    boxShadow:"-8px 3px 7px 3px #b9fffa80",
-    width:"900px",
-    marginLeft:"350px"
-        }}
-      >
-
+      <div className="pshDwn">
+        <div
+          className="icons"
+          style={{
+            marginTop: "50px",
+            background: "rgb(255 255 255 / 59%)",
+            borderRadius: "50%",
+            boxShadow: "-8px 3px 7px 3px #b9fffa80",
+            width: "900px",
+            marginLeft: "350px",
+          }}
+        >
           <img
             src={PL}
-            className={league=="Premier League"? "logoSelected": "logo"}
+            className={league == "Premier League" ? "logoSelected" : "logo"}
             onClick={() => setLeagueEraseTeam("Premier League")}
           ></img>
           <img
             src={BL}
-            className={league=="Bundesliga"? "logoSelected": "logo"}
+            className={league == "Bundesliga" ? "logoSelected" : "logo"}
             onClick={() => setLeagueEraseTeam("Bundesliga")}
           ></img>
           <img
             src={LL}
-            className={league=="La Liga"? "logoSelected": "logo"}
+            className={league == "La Liga" ? "logoSelected" : "logo"}
             onClick={() => setLeagueEraseTeam("La Liga")}
           ></img>
           <img
             src={LONE}
-                        className={league=="Ligue 1"? "logoSelected": "logo"}
-
+            className={league == "Ligue 1" ? "logoSelected" : "logo"}
             onClick={() => setLeagueEraseTeam("Ligue 1")}
           ></img>
           <img
             src={SA}
-                        className={league=="Serie A"? "logoSelected": "logo"}
-
+            className={league == "Serie A" ? "logoSelected" : "logo"}
             onClick={() => setLeagueEraseTeam("Serie A")}
           ></img>
-        
-      </div>
-      {team == "" ? (
-
-        <PieChart
-          width={500}
-          height={450}
-  
-           style={{background: "#0000006b" , boxShadow: "-1px 4px 6px #0034ff" , marginTop:"25px" , marginLeft:"500px"}}
-        >
-          <Pie
-   
-            data={convertedArray}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={80}
-            fill="#8884d8"
-            dataKey="titles"
-            nameKey="team"
-            style={{cursor:"pointer"}}
-            onClick={(e) => setTeam(e.name)}
+        </div>
+        {team == "" ? (
+          <PieChart
+            width={500}
+            height={450}
+            style={{
+              background: "#0000006b",
+              boxShadow: "-1px 4px 6px #0034ff",
+              marginTop: "25px",
+              marginLeft: "500px",
+            }}
           >
-            {convertedArray.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
+            <Pie
+              data={convertedArray}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              label={renderCustomizedLabel}
+              outerRadius={80}
+              fill="#8884d8"
+              dataKey="titles"
+              nameKey="team"
+              style={{ cursor: "pointer" }}
+              onClick={(e) => setTeam(e.name)}
+            >
+              {convertedArray.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
 
-              />
-            ))}
-          </Pie>
-          <text
-            x="25"
-            y="40"
-            dominantBaseline="hanging"
-            fontSize="18"
-            fontWeight="bold"
-            fill="white"
-            style={{color:"white"}}
-          >
-            Titles per team in {league} (last 10 seasons)
-          </text>
-        </PieChart>
-      ) : (
-        ""
-      )}
-      {team != "" ? (
-        <>
-          <h2 style={{ textAlign: "left", marginLeft: "33%" , color:"#02dcff",fontFamily:"Arial" }}>
-            {" "}
-            {team}
-            's Championships league table by seasons
-            
-          </h2>{" "}
-          <Select
-            placeholder="Please Select season"
-            options={seasons}
-            styles={styles}
-            onChange={(e) => setSeason(e.value)}
-          />{" "}
-          {season != "" ? (
-            <>
-            <div style={{marginLeft:"60px"}}>
-              <div className="Top"> Top 5 </div>{" "}
-              <div className="mid"> Mid - Table </div>{" "}
-              <div className="bottom"> Bottom </div>{" "}
-              <div className="relegation"> Relegated </div>
-              </div>
-              <FunnelChart width={850} height={500} style={{background: "#0000006b" , boxShadow: "-1px 4px 6px #0034ff" , marginTop:"10px" , marginLeft:"350px"}}>
-                <Funnel
-                  dataKey="points"
-                  data={league_table.sort((a, b) => b.points - a.points)}
-                  isAnimationActive
+            <text
+              x="25"
+              y="40"
+              dominantBaseline="hanging"
+              fontSize="18"
+              fontWeight="bold"
+              fill="white"
+              style={{ color: "white" }}
+            >
+              Titles per team in {league} (last 11 seasons).
+            </text>
+            <text
+              x="25"
+              y="60"
+              dominantBaseline="hanging"
+              fontSize="18"
+              fontWeight="bold"
+              fill="white"
+              style={{ color: "white" }}
+            >
+              Click on the logo to change league.
+            </text>
+            <text
+              x="25"
+              y="85"
+              dominantBaseline="hanging"
+              fontSize="15"
+              fontWeight="bold"
+              fill="white"
+              style={{ color: "white" }}
+            >
+              Click a slice on the pie for the league's table in the winning
+              years.
+            </text>
+          </PieChart>
+        ) : (
+          ""
+        )}
+        {team != "" ? (
+          <>
+            <h2
+              style={{
+                textAlign: "left",
+                marginLeft: "33%",
+                color: "#02dcff",
+                fontFamily: "Arial",
+              }}
+            >
+              {" "}
+              {team}
+              's Championships league table by seasons
+            </h2>{" "}
+            <Select
+              placeholder="Please Select season"
+              options={seasons}
+              styles={styles}
+              onChange={(e) => setSeason(e.value)}
+            />{" "}
+            {season != "" ? (
+              <>
+                <div style={{ marginLeft: "60px" }}>
+                  <div className="Top"> Top 5 </div>{" "}
+                  <div className="mid"> Mid - Table </div>{" "}
+                  <div className="bottom"> Bottom </div>{" "}
+                  <div className="relegation"> Relegated </div>
+                </div>
+                <FunnelChart
+                  width={850}
+                  height={500}
+                  style={{
+                    background: "#0000006b",
+                    boxShadow: "-1px 4px 6px #0034ff",
+                    marginTop: "10px",
+                    marginLeft: "350px",
+                  }}
                 >
-                  <LabelList
-                    position="center"
-                    fill="#ffffff"
-                    stroke="none"
-                    dataKey="team_points"
-                  />
-                </Funnel>{" "}
-              </FunnelChart>{" "}
-            </>
-          ) : (
-            ""
-          )}{" "}
-        </>
-      ) : (
-        ""
-      )}{" "}
+                  <Funnel
+                    dataKey="points"
+                    data={league_table.sort((a, b) => b.points - a.points)}
+                    isAnimationActive
+                  >
+                    <LabelList
+                      position="center"
+                      fill="#ffffff"
+                      stroke="none"
+                      dataKey="team_points"
+                    />
+                  </Funnel>{" "}
+                </FunnelChart>{" "}
+              </>
+            ) : (
+              ""
+            )}{" "}
+          </>
+        ) : (
+          ""
+        )}{" "}
       </div>
     </>
   );

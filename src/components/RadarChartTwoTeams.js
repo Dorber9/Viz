@@ -27,8 +27,6 @@ import {
 
 import { data } from "../data/Big5Stats";
 
-
-
 const styles = {
   container: (base) => ({
     ...base,
@@ -108,7 +106,18 @@ const RadarChartTwoTeams = () => {
         key == "points"
       ) {
         data_to_use.push({
-          Subject: key,
+          Subject:
+            key == "goals_for"
+              ? "Goals for"
+              : key == "assists"
+              ? "Assists"
+              : key == "goal_diff"
+              ? "Goal difference"
+              : key == "clean_sheets"
+              ? "Clean Sheets"
+              : key == "players_used"
+              ? "Players Used"
+              : "Points",
           A: my_data[0][key],
           B: my_data1[0][key],
         });
@@ -120,101 +129,111 @@ const RadarChartTwoTeams = () => {
 
   return (
     <>
-    <div className="pshDwn">
-      <div style={{marginLeft:"38%" , marginTop:"10px"}}>
-      <Select
-        placeholder="Select Season"
-        styles={styles}
-        options={all_seasons}
-        onChange={(e) => changeSeason(e.value)}
-      ></Select>
-      </div>
-      {season == "" ? (
-        ""
-      ) : (
-        <div style={{marginLeft:"25%" , marginTop:"10px"}}>
-        <Select
-          placeholder="Select First Team League"
-          styles={styles}
-          options={leagues}
-          onChange={(e) => changeLeagA(e.value)}
-          
-        />
+      <div className="pshDwn">
+        <div style={{ marginLeft: "38%", marginTop: "10px" }}>
+          <Select
+            placeholder="Select Season"
+            styles={styles}
+            options={all_seasons}
+            onChange={(e) => changeSeason(e.value)}
+          ></Select>
         </div>
-        
-      )}
-      {leagA == "" ? (
-        ""
-      ) : (
-     <div style={{marginLeft:"25%" , marginTop:"10px"}}>
-        <Select
-          placeholder="Select First Team"
-          styles={styles}
-          options={teamsA}
-          onChange={(e) => setTeamA(e.value)}
-        ></Select>
-        </div>
-      )}
-      {teamA == "" ? (
-        ""
-      ) : (
-             <div style={{marginLeft:"51%" , marginTop:"-85px"}}>
-        <Select
-         placeholder="Select Second Team League"
-          styles={styles}
-          options={leagues}
-          onChange={(e) => changeLeagB(e.value)}
-        ></Select>
-        </div>
-      )}
-      {leagB == "" ? (
-        ""
-      ) : (
-                     <div style={{marginLeft:"51%" , marginTop:"10px"}}>
+        {season == "" ? (
+          ""
+        ) : (
+          <div style={{ marginLeft: "25%", marginTop: "10px" }}>
+            <Select
+              placeholder="Select First Team League"
+              styles={styles}
+              options={leagues}
+              onChange={(e) => changeLeagA(e.value)}
+            />
+          </div>
+        )}
+        {leagA == "" ? (
+          ""
+        ) : (
+          <div style={{ marginLeft: "25%", marginTop: "10px" }}>
+            <Select
+              placeholder="Select First Team"
+              styles={styles}
+              options={teamsA}
+              onChange={(e) => setTeamA(e.value)}
+            ></Select>
+          </div>
+        )}
+        {teamA == "" ? (
+          ""
+        ) : (
+          <div style={{ marginLeft: "51%", marginTop: "-85px" }}>
+            <Select
+              placeholder="Select Second Team League"
+              styles={styles}
+              options={leagues}
+              onChange={(e) => changeLeagB(e.value)}
+            ></Select>
+          </div>
+        )}
+        {leagB == "" ? (
+          ""
+        ) : (
+          <div style={{ marginLeft: "51%", marginTop: "10px" }}>
+            <Select
+              placeholder="Select Second Team"
+              styles={styles}
+              options={teamsB}
+              onChange={(e) => setTeamB(e.value)}
+            ></Select>
+          </div>
+        )}
 
-        <Select
-                 placeholder="Select Second Team"
-          styles={styles}
-          options={teamsB}
-          onChange={(e) => setTeamB(e.value)}
-        ></Select>
-        </div>
-      )}
-
-      {teamA == "" || teamB == "" ? (
-        ""
-      ) : (
-        <RadarChart
-        style={{marginLeft:"30%", marginTop:"15px" , background:"black", boxShadow:"rgb(165 166 169) 1px 1px 10px"}}
-          cx={300}
-          cy={250}
-          outerRadius={150}
-          width={600}
-          height={500}
-          data={data_to_use}
-        >
-          <PolarGrid />
-          <Tooltip/>
-          <PolarAngleAxis dataKey="Subject" stroke="#8884d8" />
-          <PolarRadiusAxis angle={30} domain={[0, 105]} />
-          <Radar
-            name={teamA}
-            dataKey="A"
-            stroke="#8884d8"
-            fill="#8884d8"
-            fillOpacity={0.6}
-          />
-          <Radar
-            name={teamB}
-            dataKey="B"
-            stroke="#ff1a1a"
-            fill="#ff1a1a"
-            fillOpacity={0.6}
-          />
-          <Legend />
-        </RadarChart>
-        
-      )}
+        {teamA == "" || teamB == "" ? (
+          ""
+        ) : (
+          <RadarChart
+            style={{
+              marginLeft: "30%",
+              marginTop: "15px",
+              background: "rgba(0, 0, 0, 0.9)",
+              boxShadow: "rgb(165 166 169) 1px 1px 10px",
+            }}
+            cx={300}
+            cy={250}
+            outerRadius={150}
+            width={600}
+            height={500}
+            data={data_to_use}
+          >
+            <text
+              x={500 / 2}
+              y={20}
+              fill="white"
+              textAnchor="middle"
+              dominantBaseline="central"
+            >
+              <tspan fontSize="18">Team's comparison by key attributes</tspan>
+            </text>
+            <PolarGrid />
+            <Tooltip />
+            <PolarAngleAxis dataKey="Subject" stroke="#8884d8" />
+            <PolarRadiusAxis angle={30} domain={[0, 105]} />
+            <Radar
+              name={teamA}
+              dataKey="A"
+              stroke="#8884d8"
+              fill="#8884d8"
+              fillOpacity={0.6}
+            />
+            <Radar
+              name={teamB}
+              dataKey="B"
+              stroke="#ff1a1a"
+              fill="#ff1a1a"
+              fillOpacity={0.6}
+            />
+            <Legend />
+          </RadarChart>
+        )}
       </div>
     </>
   );
