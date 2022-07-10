@@ -34,7 +34,7 @@ const styles = {
     ...base,
     flex: 1,
     width: "250px",
-    marginLeft: "350px",
+    marginLeft: "43%",
   }),
 };
 
@@ -166,7 +166,9 @@ const PieChartAtt = () => {
           marginTop: "50px",
              background: "rgb(255 255 255 / 59%)",
     borderRadius: "50%",
-    boxShadow:"-8px 3px 7px 3px #b9fffa80"
+    boxShadow:"-8px 3px 7px 3px #b9fffa80",
+    width:"900px",
+    marginLeft:"350px"
         }}
       >
 
@@ -230,15 +232,15 @@ const PieChartAtt = () => {
             ))}
           </Pie>
           <text
-            x="60"
+            x="25"
             y="40"
             dominantBaseline="hanging"
-            fontSize="24"
+            fontSize="18"
             fontWeight="bold"
             fill="white"
             style={{color:"white"}}
           >
-            Titles per team in {league}
+            Titles per team in {league} (last 10 seasons)
           </text>
         </PieChart>
       ) : (
@@ -246,23 +248,27 @@ const PieChartAtt = () => {
       )}
       {team != "" ? (
         <>
-          <h2 style={{ textAlign: "left", marginLeft: "200px" , color:"white" }}>
+          <h2 style={{ textAlign: "left", marginLeft: "33%" , color:"#02dcff",fontFamily:"Arial" }}>
             {" "}
             {team}
-            's Championships. Choose a season{" "}
+            's Championships league table by seasons
+            
           </h2>{" "}
           <Select
+            placeholder="Please Select season"
             options={seasons}
             styles={styles}
             onChange={(e) => setSeason(e.value)}
           />{" "}
           {season != "" ? (
             <>
+            <div style={{marginLeft:"60px"}}>
               <div className="Top"> Top 5 </div>{" "}
               <div className="mid"> Mid - Table </div>{" "}
               <div className="bottom"> Bottom </div>{" "}
               <div className="relegation"> Relegated </div>
-              <FunnelChart width={850} height={580} style={{background: "#0000006b" , boxShadow: "-1px 4px 6px #0034ff" , marginTop:"10px" , marginLeft:"350px"}}>
+              </div>
+              <FunnelChart width={850} height={500} style={{background: "#0000006b" , boxShadow: "-1px 4px 6px #0034ff" , marginTop:"10px" , marginLeft:"350px"}}>
                 <Funnel
                   dataKey="points"
                   data={league_table.sort((a, b) => b.points - a.points)}

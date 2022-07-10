@@ -81,6 +81,7 @@ const convertedArray = Object.keys(res1).map((x) => {
           width={850}
           height={550}
           data={convertedArray}
+          title="try"
         >
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
@@ -96,10 +97,11 @@ const convertedArray = Object.keys(res1).map((x) => {
             label={{
               value: "Team",
               position: "insideTopLeft",
-              fontSize: "13px",
+              fontSize: "14px",
               dy: 5,
               dx: -30,
               stroke: "white",
+              fontFamily:"auto"
             }}
           />
           <YAxis
@@ -109,6 +111,8 @@ const convertedArray = Object.keys(res1).map((x) => {
               dx: -10,
               stroke: "white",
               angle: "90",
+              fontSize:"14px",
+              fontFamily:"auto"
             }}
           />
           <Bar dataKey="goals_for" fill="#00ff00">
@@ -121,16 +125,16 @@ const convertedArray = Object.keys(res1).map((x) => {
           <Bar dataKey="goals_against" fill="#ff0000" />
         </BarChart>
       </div>
-      <div style={{ float: "left", marginLeft: "25px", marginTop: "25px" }}>
+      <div style={{ float: "left", marginLeft: "25px", marginTop: "25px",width:"200px" }}>
         <Card className="card" style={cardShadow}>
           <Card.Body>
-            <Card.Title>What's the key for winning titles?</Card.Title>
+            <Card.Title>What's the key for winning titles? Offence or Defence?</Card.Title>
 
-            <Card.Text>This graph shows...</Card.Text>
+            <Card.Text>This graph shows the connection between goals scored, goals conceeded and amount of titles won last 10 years</Card.Text>
           </Card.Body>
         </Card>
          <Select
-          placeholder="Select League"
+          placeholder="Fillter by League"
           options={leagues}
           onChange={(e) => setLeagA(e.value)}
           
